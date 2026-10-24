@@ -29,7 +29,7 @@ enum PersonValidator {
         let phone = person.phone.trimmingCharacters(in: .whitespaces)
         if !phone.isEmpty {
             if !isPhoneFormatValid(phone) {
-                errors.append(ValidationError(field: .phone, message: "Phone number can contain only digits, spaces, dashes and + at the beginning"))
+                errors.append(ValidationError(field: .phone, message: "Phone number can contain only digits separated by single spaces or dashes, + only at the beginning"))
             } else if phone.filter({ $0.isNumber }).count < 7 {
                 errors.append(ValidationError(field: .phone, message: "Phone number must have at least 7 digits"))
             }
@@ -46,7 +46,7 @@ enum PersonValidator {
     }
 
     static func isPhoneFormatValid(_ phone: String) -> Bool {
-        NSPredicate(format: "SELF MATCHES %@", "^\\+?[0-9 -]+$").evaluate(with: phone)
+        NSPredicate(format: "SELF MATCHES %@", "^\\+?[0-9]+([ -][0-9]+)*$").evaluate(with: phone)
     }
 
     static func isEmailValid(_ email: String) -> Bool {
