@@ -1,4 +1,5 @@
 import CoreLocation
+import Combine
 
 final class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published var location: CLLocation?
