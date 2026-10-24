@@ -30,6 +30,8 @@ struct SecondView: View {
             Text("Address: \(address)")
                 .multilineTextAlignment(.center)
                 .padding(10)
+
+            SimulatorShakeButton()
         }
         .padding(10)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

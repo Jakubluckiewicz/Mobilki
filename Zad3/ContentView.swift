@@ -23,6 +23,8 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 .padding(10)
+
+                SimulatorShakeButton()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(color)
